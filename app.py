@@ -12,69 +12,74 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-        /* Overall app background */
         .stApp {
             background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
         }
 
-        /* Reduce Streamlit's default top padding so the sticky header
-           sits closer to the very top of the page */
         div[data-testid="stMainBlockContainer"],
         .main .block-container {
             padding-top: 1.5rem !important;
         }
 
-        /* Hide the hamburger menu and footer only — keep header intact
-           so the sidebar open/close arrow keeps working */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
 
-        /* Make the header bar solid dark so text scrolling under it is hidden */
         header[data-testid="stHeader"] {
             background-color: #0f172a !important;
             box-shadow: none;
             z-index: 1000; /* Keep it on top of other elements */
         }
 
-        /* Hide just the "Deploy" button, keep everything else (incl. sidebar arrow) */
         button[data-testid="stAppDeployButton"] {
             display: none !important;
         }
 
-        /* Streamlit wraps elements in containers that use a CSS transform
-           for fade-in animation. ANY transform on ANY ancestor breaks
-           position:sticky, so we strip transforms from the main scroll area. */
         section[data-testid="stMain"] * {
             transform: none !important;
         }
 
-        /* 1. Make the outer wrapper container sticky, give it a background,
-              and enforce a gap after the header using padding-bottom */
-        div[data-testid="stVerticalBlock"] > div:has(.app-header) {
-            position: sticky;
-            top: 2.875rem;        /* Positioned exactly below the solid stHeader bar */
-            z-index: 999;
-            background-color: #0f172a; /* Matches app background to hide scrolling text */
-            padding-top: 0.2rem;   /* Spacing at the top of the header */
-            padding-bottom: 2rem;  /* Creates the 2rem gap after the header */
+        @media (min-width: 768px) {
+            div[data-testid="stVerticalBlock"] > div:has(.app-header) {
+                position: sticky;
+                top: 2.875rem;        
+                z-index: 999;
+                background-color: #0f172a; 
+                padding-top: 0.2rem;   
+                padding-bottom: 0.5rem; 
+            }
         }
 
-        /* 2. Style the header itself */
         .app-header {
-            padding: 1.25rem 1.5rem;
-            border-radius: 16px;
+            padding: 0.8rem 1rem;       
+            border-radius: 12px;        
             background: linear-gradient(135deg, #1e3a8a 0%, #0891b2 100%);
             box-shadow: 0 8px 24px rgba(8, 145, 178, 0.25);
+            margin-bottom: 0.5rem;      
         }
         .app-header h1 {
             color: #ffffff;
-            font-size: 1.8rem;
+            font-size: 1.3rem;          
             margin: 0;
+            line-height: 1.2;
         }
         .app-header p {
             color: #dbeafe;
-            margin: 0.35rem 0 0 0;
-            font-size: 0.95rem;
+            margin: 0.25rem 0 0 0;
+            font-size: 0.8rem;          
+        }
+
+        @media (min-width: 768px) {
+            .app-header {
+                padding: 1.25rem 1.5rem; 
+                border-radius: 16px;
+                margin-bottom: 0.75rem; 
+            }
+            .app-header h1 {
+                font-size: 1.8rem;       
+            }
+            .app-header p {
+                font-size: 0.95rem;      
+            }
         }
 
         /* Chat bubbles */
