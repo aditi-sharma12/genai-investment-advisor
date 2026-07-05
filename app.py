@@ -2,9 +2,6 @@ import streamlit as st  # type: ignore
 from datetime import datetime
 from tools.fetch_stock_info import Anazlyze_stock, chat_follow_up
 
-# ----------------------------------------------------------------------
-# Page config
-# ----------------------------------------------------------------------
 st.set_page_config(
     page_title="GenAI Investment Advisor",
     page_icon="📈",
@@ -12,9 +9,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ----------------------------------------------------------------------
-# Custom CSS
-# ----------------------------------------------------------------------
 st.markdown(
     """
     <style>
@@ -134,15 +128,11 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ----------------------------------------------------------------------
 # Session state
-# ----------------------------------------------------------------------
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# ----------------------------------------------------------------------
 # Sidebar
-# ----------------------------------------------------------------------
 with st.sidebar:
     st.markdown("### 📊 Stock Assistant")
     st.markdown('<span class="status-badge">● Live</span>', unsafe_allow_html=True)
@@ -175,9 +165,7 @@ with st.sidebar:
         "not financial advice. Always do your own research."
     )
 
-# ----------------------------------------------------------------------
 # Header
-# ----------------------------------------------------------------------
 st.markdown(
     """
     <div class="app-header">
@@ -188,23 +176,17 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ----------------------------------------------------------------------
 # Empty state
-# ----------------------------------------------------------------------
 if not st.session_state.messages:
     st.info("👋 Start by typing a stock question below, or pick an example from the sidebar.")
 
-# ----------------------------------------------------------------------
 # Render chat history
-# ----------------------------------------------------------------------
 for message in st.session_state.messages:
     avatar = "🧑‍💻" if message["role"] == "user" else "📊"
     with st.chat_message(message["role"], avatar=avatar):
         st.markdown(message["content"])
 
-# ----------------------------------------------------------------------
 # Handle input (typed or example button)
-# ----------------------------------------------------------------------
 prompt = st.chat_input("Enter your query here...")
 if example_clicked and not prompt:
     prompt = example_clicked
