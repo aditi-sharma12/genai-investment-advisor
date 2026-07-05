@@ -47,16 +47,15 @@ Install all required libraries specified in [requirements.txt](requirements.txt)
 ```bash
 pip install -r requirements.txt
 ```
-### 2. Configure API Key
-Add your Gemini API Key in [tools/fetch_stock_info.py]
-
+### 4. Configure API Key
+* Add your Gemini API Key in [tools/fetch_stock_info.py]
+```bash
 GEMINI_API_KEY = "your-api-key-here"
-### 4. Configure Environment Variables
-Create or update the `.env` file in the root directory:
+```
+* Create or update the `.env` file in the root directory:
 ```env
 GROQ_API_KEY="your-groq-api-key-here"
 ```
-### 3. Launch App
 ---
 ## 🖥️ Running the Application
 ### Launch Streamlit App
@@ -95,6 +94,10 @@ Investment Thesis for Adani Power:
 Conclusion:
 Based on the available data, investing in Adani Power right now could be a favorable option. The company has strong financials and a positive stock price trend. However, it is important to conduct further research and analysis to fully understand the reasons behind the declining revenues and assess the potential risks associated with the power sector.
 ```
+## 🚀 Future Plan
+* Track stock price charts to look for upward or downward trends.
+* Use news articles to measure if public opinion is positive or negative.
+* Train a machine learning model to combine this data and forecast stock direction.
 
 ## ⚠️ Disclaimer
 > [!WARNING]
