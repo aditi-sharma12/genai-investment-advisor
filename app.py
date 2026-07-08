@@ -21,6 +21,12 @@ st.markdown(
             padding-top: 1.5rem !important;
         }
 
+        div[data-testid="stMainBlockContainer"] {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            max-width: 100% !important;
+        }
+
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
 
@@ -54,18 +60,35 @@ st.markdown(
             border-radius: 12px;        
             background: linear-gradient(135deg, #1e3a8a 0%, #0891b2 100%);
             box-shadow: 0 8px 24px rgba(8, 145, 178, 0.25);
-            margin-bottom: 0.5rem;      
+            margin-bottom: 0.5rem;
+            box-sizing: border-box;
+            width: 100%;
         }
         .app-header h1 {
             color: #ffffff;
             font-size: 1.3rem;          
             margin: 0;
             line-height: 1.2;
+            word-break: break-word;
         }
         .app-header p {
             color: #dbeafe;
             margin: 0.25rem 0 0 0;
-            font-size: 0.8rem;          
+            font-size: 0.8rem;
+            word-break: break-word;
+        }
+
+        @media (max-width: 480px) {
+            .app-header {
+                padding: 0.6rem 0.75rem;
+                border-radius: 10px;
+            }
+            .app-header h1 {
+                font-size: 1.05rem;
+            }
+            .app-header p {
+                font-size: 0.72rem;
+            }
         }
 
         @media (min-width: 768px) {
@@ -88,6 +111,17 @@ st.markdown(
             padding: 0.75rem 1rem;
             margin-bottom: 0.6rem;
             border: 1px solid rgba(255,255,255,0.06);
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        @media (max-width: 480px) {
+            [data-testid="stChatMessage"] {
+                padding: 0.6rem 0.75rem;
+                font-size: 0.9rem;
+                border-radius: 12px;
+            }
         }
 
         /* Sidebar */
@@ -105,6 +139,9 @@ st.markdown(
             padding: 0.6rem 0.8rem;
             margin-bottom: 0.5rem;
             transition: all 0.15s ease;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 1.3;
         }
         section[data-testid="stSidebar"] .stButton button:hover {
             border-color: #0891b2;
@@ -112,9 +149,26 @@ st.markdown(
             color: #ffffff;
         }
 
+        @media (max-width: 480px) {
+            section[data-testid="stSidebar"] {
+                min-width: 82vw !important;
+                max-width: 88vw !important;
+            }
+            section[data-testid="stSidebar"] .stButton button {
+                padding: 0.5rem 0.65rem;
+                font-size: 0.85rem;
+            }
+        }
+
         /* Chat input box */
         .stChatInputContainer {
             border-radius: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .stChatInputContainer {
+                border-radius: 12px;
+            }
         }
 
         /* Badge */
