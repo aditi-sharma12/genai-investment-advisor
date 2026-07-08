@@ -27,6 +27,10 @@ st.markdown(
             max-width: 100% !important;
         }
 
+        div[data-testid="stMainBlockContainer"] {
+            padding-top: 2.75rem !important;
+        }
+
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
 
@@ -47,7 +51,7 @@ st.markdown(
         @media (min-width: 768px) {
             div[data-testid="stVerticalBlock"] > div:has(.app-header) {
                 position: sticky;
-                top: 2.875rem;        
+                top: 3.5rem;        
                 z-index: 999;
                 background-color: #0f172a; 
                 padding-top: 0.2rem;   
@@ -150,13 +154,19 @@ st.markdown(
         }
 
         @media (max-width: 480px) {
-            section[data-testid="stSidebar"] {
+            section[data-testid="stSidebar"][aria-expanded="true"] {
                 min-width: 82vw !important;
                 max-width: 88vw !important;
             }
             section[data-testid="stSidebar"] .stButton button {
                 padding: 0.5rem 0.65rem;
                 font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            div[data-testid="stSidebarResizeHandle"] {
+                display: none !important;
             }
         }
 
